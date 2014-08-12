@@ -2,6 +2,7 @@ package com.pork.osrspathgenerator;
 
 public enum PathAlgorithm {
 
+    NONE("None"),
     A_STAR("A*");
 
     private String name;
