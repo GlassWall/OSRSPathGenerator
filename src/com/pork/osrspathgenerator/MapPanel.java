@@ -20,7 +20,7 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
 
     private final String MAP_IMAGE_PATH = "/resources/map.png";
     private final String UNREACHABLE_TILE_DATA_PATH = "/resources/unreachable_tiles.dat";
-    private final double TILE_SIZE = 3;
+    private final int TILE_SIZE = 3;
     private final int TILE_X_MODIFIER = 1984;
     private final int TILE_Y_MODIFIER = -1153;
 
@@ -83,7 +83,7 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
                 Tile modifiedTile = new Tile(Integer.parseInt(tileCoordinates[0]), Integer.parseInt(tileCoordinates[1]));
                 Tile unmodifiedTile = removeModifiers(modifiedTile);
                 unreachableTiles.add(modifiedTile);
-                //unmodifiedTiles[unmodifiedTile.getX()][unmodifiedTile.getY()].setWalkable(false);
+                unmodifiedTiles[unmodifiedTile.getX()][unmodifiedTile.getY()].setWalkable(false);
             }
             tileFileReader.close();
 
@@ -366,7 +366,7 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
             ArrayList<Tile> allCalculatedPaths = new ArrayList<Tile>();
             if (pathAlgorithm == PathAlgorithm.A_STAR) {
                 if (pathTiles.size() >= 2) {
-                    for (int i=0; i<pathTiles.size() - 1; i++) {
+                    for (int i = 0; i < pathTiles.size() - 1; i++) {
                         Tile startTileUnmodified = pathTiles.get(i);
                         Tile endTileUnmodified = pathTiles.get(i + 1);
                         Tile startTile = removeModifiers(startTileUnmodified);

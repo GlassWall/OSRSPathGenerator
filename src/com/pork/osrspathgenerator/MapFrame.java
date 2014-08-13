@@ -183,8 +183,9 @@ public class MapFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 mapPanel.setPathAlgorithm((PathAlgorithm)pathAlgorithmComboBox.getSelectedItem());
                 if (pathAlgorithmComboBox.getSelectedIndex() > 0) {
-                    JOptionPane.showMessageDialog(null, "Note: The implemented path finding is experimental and unfinished. As a result, it is fairly slow and buggy.", "Old School RuneScape Path Generator", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Note: path finding was implemented mainly for fun and learning purposes. It is fairly slow and buggy.", "Old School RuneScape Path Generator", JOptionPane.INFORMATION_MESSAGE);
                 }
+                updateTileTable();
             }
 
         });
@@ -254,7 +255,7 @@ public class MapFrame extends JFrame {
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        creatorLabel.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        creatorLabel.setFont(new java.awt.Font("Verdana", 0, 12));
         creatorLabel.setForeground(new java.awt.Color(153, 153, 153));
         creatorLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         creatorLabel.setText("Created by Pork");
