@@ -18,11 +18,11 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
     private final double PREFERRED_ZOOM_LEVEL = 0.5;
     private final int PREFERRED_PATH_TILE_INTERVAL = 20;
 
-    private final String MAP_IMAGE_PATH = "/resources/map.jpg";
+    private final String MAP_IMAGE_PATH = "/resources/map.png";
     private final String UNREACHABLE_TILE_DATA_PATH = "/resources/unreachable_tiles.dat";
-    private final double TILE_SIZE = 2;
+    private final double TILE_SIZE = 3;
     private final int TILE_X_MODIFIER = 1984;
-    private final int TILE_Y_MODIFIER = 639;
+    private final int TILE_Y_MODIFIER = -1153;
 
     private MapFrame mapFrame;
     private BufferedImage map;
@@ -83,7 +83,7 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
                 Tile modifiedTile = new Tile(Integer.parseInt(tileCoordinates[0]), Integer.parseInt(tileCoordinates[1]));
                 Tile unmodifiedTile = removeModifiers(modifiedTile);
                 unreachableTiles.add(modifiedTile);
-                unmodifiedTiles[unmodifiedTile.getX()][unmodifiedTile.getY()].setWalkable(false);
+                //unmodifiedTiles[unmodifiedTile.getX()][unmodifiedTile.getY()].setWalkable(false);
             }
             tileFileReader.close();
 
@@ -377,7 +377,7 @@ public class MapPanel extends JPanel implements MouseListener, MouseMotionListen
                             ArrayList<Tile> closedList = new ArrayList<Tile>();
                             Tile currentTile = startTile;
                             openList.add(currentTile);
-                            while (!currentTile.equals(endTile) && !openList.isEmpty()) {
+                            while (currentTile != null && endTile != null && !currentTile.equals(endTile) && !openList.isEmpty()) {
                                 closedList.add(currentTile);
                                 openList.remove(currentTile);
                                 for (int x=-1; x<=1; x++) {
